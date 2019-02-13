@@ -130,7 +130,7 @@ class StarQuizGame extends Component {
                             <div className='col-md-5'>
                                 <h1 className='game-timer'><i className="fa fa-clock-o game-clock-icon" />&nbsp;
                                     <TimerMachine
-                                        timeStart={15 * 1000} // start at 2 minutes
+                                        timeStart={120 * 1000} // start at 2 minutes
                                         timeEnd={0} // end at 0 seconds
                                         started={timerStarted}
                                         paused={timerPaused}
