@@ -31,13 +31,13 @@ class App extends Component {
   }
 
   componentWillReceiveProps() {
-    //this.props.setImages();
+    this.props.setImages();
 
     // Logic to get the next page of the characters
-    if (this.props.charactersNextPage !== null && (this.props.charactersNextPage !== this.state.charactersPreviousPage)) {
-      this.setState({ charactersPreviousPage: this.props.charactersNextPage });
-      this.props.getCharacters(this.props.charactersNextPage);
-    }
+    // if (this.props.charactersNextPage !== null && (this.props.charactersNextPage !== this.state.charactersPreviousPage)) {
+    //   this.setState({ charactersPreviousPage: this.props.charactersNextPage });
+    //   this.props.getCharacters(this.props.charactersNextPage);
+    // }
   }
 
   render() {
@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div className='body'>
         { /* Spinner  */
-          this.props.charactersNextPage !== null ? (
+          this.props.charactersNextPage === null ? (
             <div className='overlay'>
               <div className='spinner'>
                 <RiseLoader color={'#fff'} />

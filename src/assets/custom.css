@@ -232,12 +232,14 @@ ul.pagination a.page-link:hover {
 /* Info */
 .container-info {
   margin-top: 150px;
-  color: #f4f4f4; }
+  color: #e4e4e4;
+  font-size: 17px; }
 
 /* About */
 .container-about {
   margin-top: 150px;
-  color: #f4f4f4; }
+  color: #e4e4e4;
+  font-size: 17px; }
 
 .p-about {
   margin-bottom: 0.5rem; }
@@ -342,11 +344,17 @@ ul.pagination a.page-link:hover {
   color: #f4f4f4;
   background-color: #464747;
   border-color: #464747;
-  width: 38px;
+  width: 40px;
   font-weight: 500; }
 
 .btn-card-info {
   float: right; }
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+  cursor: no-drop; }
 
 .card-answered {
   background-color: #ffe919; }
@@ -409,8 +417,16 @@ ul.pagination a.page-link:hover {
   .container-aux {
     margin-top: 130px; }
   .game-label-redirect {
-    margin-top: 35%; } }
+    margin-top: 35%; }
+  .game-timer {
+    float: right;
+    position: initial; }
+  .navbar-overlapping {
+    width: 86%;
+    position: absolute;
+    top: 0; } }
 
 @media only screen and (max-width: 767px) {
   .game-timer {
-    top: 26%; } }
+    float: left;
+    position: initial; } }
