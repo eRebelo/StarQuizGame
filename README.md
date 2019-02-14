@@ -1,6 +1,8 @@
 # StarQuiz Game
 Aplicação desenvolvida na linguagem Front-End ReactJS + Redux.
 
+----------
+
 ## Dependências
 - Instalar Node.js com NPM: https://nodejs.org/en/download/
 <br>Versão: **node -v** 
@@ -14,3 +16,9 @@ Aplicação desenvolvida na linguagem Front-End ReactJS + Redux.
 - npm start
 
 ----------
+
+## Demo
+- StarQuiz Game [1]
+
+----------
+[1]: https://starquiz-game.herokuapp.com/
