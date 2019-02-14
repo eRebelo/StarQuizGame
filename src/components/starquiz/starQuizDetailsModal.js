@@ -70,7 +70,7 @@ class StarQuizDetailsModal extends Component {
                             <div className='container container-details-modal'>
                                 <div className='row'>
                                     <div className='col-6'>
-                                        <img className='card-img-top' src={this.props.character.url} alt='Card image cap' />
+                                        <img className='card-img-top' src={this.props.character.url} alt='card' />
                                     </div>
                                     <div className='col-6'>
                                         <div className='row first-row-details-modal'>

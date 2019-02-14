@@ -143,6 +143,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto; }
 
+.modal-footer {
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
 /* Form validation */
 .error-input {
   border: 1px solid #c7254e; }
@@ -248,16 +252,49 @@ ul.pagination a.page-link:hover {
   margin-top: 30px;
 }
 
+/* Ranking */
+.container-ranking {
+  margin-top: 150px;
+  color: #e4e4e4;
+  font-size: 17px;
+}
+
+.btn-play-ranking {
+  color: #464747;
+  background-color: #ffe919;
+  border-color: #000;
+  margin-top: 45px;
+  width: 300px;
+  height: 70px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.btn-play-ranking:hover {
+  color: #f4f4f4;
+  background-color: #464747;
+  border-color: #000;
+}
+
+.btn-play-ranking:focus {
+  color: #f4f4f4;
+  background-color: #464747;
+  border-color: #000;
+  outline-width: 0 !important;
+}
+
 /* Info */
 .container-info {
   margin-top: 150px;
-  color: #f4f4f4;
+  color: #e4e4e4;
+  font-size: 17px;
 }
 
 /* About */
 .container-about {
   margin-top: 150px;
-  color: #f4f4f4;
+  color: #e4e4e4;
+  font-size: 17px;
 }
 
 .p-about {
@@ -383,12 +420,19 @@ ul.pagination a.page-link:hover {
   color: #f4f4f4;
   background-color: #464747;
   border-color: #464747;
-  width: 38px;
+  width: 40px;
   font-weight: 500;
 }
 
 .btn-card-info {
   float: right;
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+  cursor: no-drop;
 }
 
 .card-answered {
@@ -445,6 +489,46 @@ ul.pagination a.page-link:hover {
   color: #c7254e;
 }
 
+/* Score Modal */
+.final-score {
+  text-align: center;
+  font-size: 30px;
+  background: #464747;
+  color: #ffe919;
+  margin-top: -17px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.msg-score {
+  margin-bottom: 10px;
+}
+
+.btn-play-score {
+  color: #464747;
+  background-color: #ffe919;
+  border-color: #b3a846;
+  width: 176px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.btn-play-score:hover {
+  color: #f4f4f4;
+  background-color: #464747;
+  border-color: #000;
+}
+
+.btn-play-score:focus {
+  color: #f4f4f4;
+  background-color: #464747;
+  border-color: #000;
+  outline-width: 0 !important;
+}
+
+
+/* Responsive Layout */
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
   .game-timer {
     right: 0;
@@ -473,10 +557,20 @@ ul.pagination a.page-link:hover {
   .game-label-redirect {
     margin-top: 35%;
   }
+  .game-timer {
+    float: right;
+    position: initial;
+  }
+  .navbar-overlapping {
+    width: 86%;
+    position: absolute;
+    top: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
   .game-timer {
-    top: 26%;
+    float: left;
+    position: initial;
   }
 }
