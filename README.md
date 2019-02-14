@@ -18,7 +18,7 @@ Aplicação desenvolvida na linguagem Front-End ReactJS + Redux.
 ----------
 
 ## Demo
-- StarQuiz Game [1]
+- [StarQuiz Game][1]
 
 ----------
 [1]: https://starquiz-game.herokuapp.com/
