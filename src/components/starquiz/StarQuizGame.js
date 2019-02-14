@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import StarQuizDetailsModal from './starQuizDetailsModal'
 import StarQuizCharacterModal from './starQuizCharacterModal'
+import StarQuizScoreModal from './starQuizScoreModal'
+import { hashHistory } from 'react-router';
 import Pagination from "../../template/Pagination";
 import helmetLogo from '../../assets/imgs/helmet-logo.png'
-
 import TimerMachine from 'react-timer-machine'
 import moment from "moment"
-import momentDurationFormatSetup from "moment-duration-format"
+import momentDurationFormatSetup from "moment-duration-format" /* This import can not be removed */
 
 const LIMIT_PER_PAGE = 9;
 
@@ -29,12 +30,16 @@ class StarQuizGame extends Component {
             characterDetails: null,
             showCharacterModal: false,
             characterIndex: false,
+            showScoreModal: false,
 
-            score: []
+            score: [],
+            finalScore: null
         };
     }
 
     componentDidMount() {
+        //localStorage.clear();
+
         // Parse props to state of the characters
         const tempAllCharacter = this.props.characters;
         const tempScore = [];
@@ -57,28 +62,28 @@ class StarQuizGame extends Component {
         this.setState({ currentPage, currentCharacters, totalPages });
     };
 
-    /* Open details modal */
-    openDetailsModal = (index) => {
-        // Set tip to true on the score
-        const tempScore = this.state.score;
-        tempScore[index].tip = true;
-
-        this.setState({ timerPaused: true, showDetailsModal: true, characterDetails: this.state.allCharacters[index], score: tempScore });
+    /* Open modals */
+    openModal = (modal, index) => {
+        if (modal === 'DETAILS') {
+            // Set tip to true on the score
+            const tempScore = this.state.score;
+            tempScore[index].tip = true;
+            this.setState({ timerPaused: true, showDetailsModal: true, characterDetails: this.state.allCharacters[index], score: tempScore });
+        } else if (modal === 'CHARACTER') {
+            this.setState({ timerPaused: true, showCharacterModal: true, characterIndex: index });
+        } else if (modal === 'SCORE') {
+            this.scoreCalc();
+            this.setState({ showScoreModal: true });
+        }
     }
 
-    /* Close details modal */
-    closeDetailsModal = () => {
-        this.setState({ timerPaused: false, showDetailsModal: false, characterDetails: null });
-    }
-
-    /* Open character modal */
-    openCharacterModal = (index) => {
-        this.setState({ timerPaused: true, showCharacterModal: true, characterIndex: index });
-    }
-
-    /* Close character modal */
-    closeCharacterModal = () => {
-        this.setState({ timerPaused: false, showCharacterModal: false, characterIndex: null });
+    /* Close modals */
+    closeModal = (modal) => {
+        if (modal === 'DETAILS') {
+            this.setState({ timerPaused: false, showDetailsModal: false, characterDetails: null });
+        } else if (modal === 'CHARACTER') {
+            this.setState({ timerPaused: false, showCharacterModal: false, characterIndex: null });
+        }
     }
 
     /* Confirm character modal */
@@ -92,6 +97,39 @@ class StarQuizGame extends Component {
         tempScore[this.state.characterIndex].answer = values.name;
 
         this.setState({ timerPaused: false, showCharacterModal: false, characterIndex: null, allCharacters: tempAllCharacter, score: tempScore });
+    }
+
+    /* Confirm score modal */
+    confirmScoreModal = (values) => {
+        // Get the local storage
+        let scores = JSON.parse(localStorage.getItem("scores") || "[]");
+        let scoreLength = scores.length;
+
+        // Build the current score
+        const newScore = { name: values.name, email: values.email, score: this.state.finalScore }
+
+        // Verifies if already there is score for user and email and if is bigger than last one
+        let foundScore = false;
+        for (let i = 0; i < scoreLength; i++) {
+            if (scores[i].name === values.name && scores[i].email === values.email) {
+                if (scores[i].score < this.state.finalScore) {
+                    scores[i].score = this.state.finalScore;
+                }
+                foundScore = true;
+                break;
+            }
+        }
+        // If there is not score for the user and email registered adds a new score
+        if (!foundScore) {
+            scores.push(newScore);
+        }
+
+        // Set the scores on the local storage
+        localStorage.setItem("scores", JSON.stringify(scores));
+
+        this.setState({ showScoreModal: false });
+
+        hashHistory.push('/ranking');
     }
 
     scoreCalc = () => {
@@ -108,7 +146,7 @@ class StarQuizGame extends Component {
                 }
             }
         }
-        return result;
+        this.setState({ finalScore: result });
     }
 
     render() {
@@ -130,7 +168,7 @@ class StarQuizGame extends Component {
                             <div className='col-md-5'>
                                 <h1 className='game-timer'><i className="fa fa-clock-o game-clock-icon" />&nbsp;
                                     <TimerMachine
-                                        timeStart={30 * 1000} // start at 2 minutes
+                                        timeStart={10 * 1000} // start at 2 minutes
                                         timeEnd={0} // end at 0 seconds
                                         started={timerStarted}
                                         paused={timerPaused}
@@ -139,9 +177,8 @@ class StarQuizGame extends Component {
                                         formatTimer={(time, ms) =>
                                             moment.duration(ms, "milliseconds").format("h:mm:ss")
                                         }
-                                        onComplete={time =>
-                                            console.log(this.scoreCalc())
-                                        }
+                                        onComplete={time => this.openModal('SCORE')}
+                                        onStop={time => this.setState({ timerPaused: true })}
                                     />
                                 </h1>
                             </div>
@@ -173,29 +210,35 @@ class StarQuizGame extends Component {
                             {currentCharacters.map((item, index) => (
                                 <div className='col-md-3 card-col' key={index}>
                                     <div className={'card card-custom' + (item.edited ? ' card-answered' : '')}>
-                                        <img className='card-img-top' src={item.url} alt='Card image cap' />
+                                        <img className='card-img-top' src={item.url} alt='cards' />
                                         <div className='card-body'>
                                             <p className='card-text'>{item.name}</p>
                                             <button type='button' className='btn btn-secondary btn-card' title='Inserir Nome' disabled={item.edited}
-                                                onClick={() => this.openCharacterModal(((currentPage - 1) * LIMIT_PER_PAGE) + index)}>?</button>
+                                                onClick={() => this.openModal('CHARACTER', (((currentPage - 1) * LIMIT_PER_PAGE) + index))}>?</button>
                                             <button type='button' className='btn btn-secondary btn-card btn-card-info' title='Detalhes'
-                                                onClick={() => this.openDetailsModal(((currentPage - 1) * LIMIT_PER_PAGE) + index)}>...</button>
+                                                onClick={() => this.openModal('DETAILS', (((currentPage - 1) * LIMIT_PER_PAGE) + index))}>...</button>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div >
 
+                        { /* Character Modal */
+                            this.state.showCharacterModal ? (
+                                <StarQuizCharacterModal cancelCharacterModal={() => this.closeModal('CHARACTER')} confirmForm={(values) => { this.confirmCharacterModal(values) }} />
+                            ) : null
+                        }
+
                         { /* Details Modal */
                             this.state.showDetailsModal ? (
-                                <StarQuizDetailsModal cancelDetailsModal={() => this.closeDetailsModal()}
+                                <StarQuizDetailsModal cancelDetailsModal={() => this.closeModal('DETAILS')}
                                     character={this.state.characterDetails} />
                             ) : null
                         }
 
-                        { /* Character Modal */
-                            this.state.showCharacterModal ? (
-                                <StarQuizCharacterModal cancelCharacterModal={() => this.closeCharacterModal()} confirmForm={(values) => { this.confirmCharacterModal(values) }} />
+                        { /* Score Modal */
+                            this.state.showScoreModal ? (
+                                <StarQuizScoreModal confirmForm={(values) => { this.confirmScoreModal(values) }} finalScore={this.state.finalScore} />
                             ) : null
                         }
                     </div >

@@ -3,7 +3,7 @@ import { Router, Route, Redirect, hashHistory } from 'react-router'
 
 import StarQuizHome from '../components/starquiz/StarQuizHome'
 import StarQuizGame from '../components/starquiz/StarQuizGame'
-import Ranking from '../components/ranking/ranking'
+import Ranking from '../components/ranking/Ranking'
 import Info from '../components/info/info'
 import About from '../components/about/about'
 

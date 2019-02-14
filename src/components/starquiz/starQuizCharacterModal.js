@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import { reduxForm, Field } from 'redux-form'
 import { Popover } from 'react-bootstrap'
-import { cleanForm } from './starQuizActions';
+import { cleanCharacterForm } from './starQuizActions';
 
 const required = value => (!value || !value.length) ? 'Campo obrigatório' : undefined;
 
@@ -26,7 +26,7 @@ class StarQuizCharacterModal extends Component {
     }
 
     componentWillMount() {
-        this.props.cleanForm();
+        this.props.cleanCharacterForm();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -114,7 +114,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ cleanForm }, dispatch)
+    return bindActionCreators({ cleanCharacterForm }, dispatch)
 }
 
 StarQuizCharacterModal = reduxForm({ form: 'starQuizCharacterForm', destroyOnUnmount: false })(StarQuizCharacterModal);
