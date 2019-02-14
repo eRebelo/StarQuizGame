@@ -8,17 +8,21 @@ Aplicação desenvolvida na linguagem Front-End ReactJS + Redux.
 <br>Versão: **node -v** 
 <br>Versão: **npm  -v**
 - Adicionar dependências (node_modules)
-<br>**npm install**
+```bash
+  npm install
+```   
 
 ----------
 
 ## Executar Aplicação
-- npm start
+```bash
+  npm start
+``` 
 
 ----------
 
 ## Demo
-- [StarQuiz Game][1]
+[StarQuiz Game][1]
 
 ----------
 [1]: https://starquiz-game.herokuapp.com/
