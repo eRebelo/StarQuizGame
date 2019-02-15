@@ -3,11 +3,9 @@ Aplicação desenvolvida em ReactJS & Redux.
 
 ----------
 
-## Dependências
+## Requisitos
 - Node.js + NPM
-<br>Versão: **node -v** 
-<br>Versão: **npm  -v**
-- Adicionar dependências (node_modules)
+- Instalar dependências (node_modules)
 ```bash
   npm install
 ```   
