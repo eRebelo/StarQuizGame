@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import StarQuizDetailsModal from './StarQuizDetailsModal'
-import StarQuizCharacterModal from './StarQuizCharacterModal'
+import StarQuizCharacterModal from './StarQuizCharacterModal2'
 import StarQuizScoreModal from './StarQuizScoreModal'
 import { hashHistory } from 'react-router';
 import Pagination from "../../template/Pagination";
