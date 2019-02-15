@@ -98,7 +98,7 @@ class StarQuizCharacterModal extends Component {
                         <div className='modal-footer'>
                             <div className='row'>
                                 <button type='button' className='btn btn-secondary btn-character' data-dismiss='modal' onClick={this.close}>Cancelar</button>
-                                <button type='submit' className='btn btn-dark btn-character' disabled={this.state.errors}
+                                <button type='submit' className='btn btn-dark btn-character'
                                     onClick={this.props.handleSubmit(this.onSubmit)}>Adicionar</button>
                             </div>
                         </div>

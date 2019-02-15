@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import StarQuizDetailsModal from './starQuizDetailsModal'
-import StarQuizCharacterModal from './starQuizCharacterModal'
-import StarQuizScoreModal from './starQuizScoreModal'
+import StarQuizDetailsModal from './StarQuizDetailsModal'
+import StarQuizCharacterModal from './StarQuizCharacterModal'
+import StarQuizScoreModal from './StarQuizScoreModal'
 import { hashHistory } from 'react-router';
 import Pagination from "../../template/Pagination";
 import helmetLogo from '../../assets/imgs/helmet-logo.png'
@@ -14,32 +14,33 @@ import momentDurationFormatSetup from "moment-duration-format" /* This import ca
 const LIMIT_PER_PAGE = 9;
 
 class StarQuizGame extends Component {
+
+    static initialState = {
+        timerStarted: true,
+        timerPaused: false,
+
+        allCharacters: [],
+        currentCharacters: [],
+        currentPage: null,
+        totalPages: null,
+
+        showDetailsModal: false,
+        characterDetails: null,
+        showCharacterModal: false,
+        characterIndex: false,
+        showScoreModal: false,
+
+        score: [],
+        finalScore: null
+    }
+
     constructor(props) {
         super(props)
 
-        this.state = {
-            timerStarted: true,
-            timerPaused: false,
-
-            allCharacters: [],
-            currentCharacters: [],
-            currentPage: null,
-            totalPages: null,
-
-            showDetailsModal: false,
-            characterDetails: null,
-            showCharacterModal: false,
-            characterIndex: false,
-            showScoreModal: false,
-
-            score: [],
-            finalScore: null
-        };
+        this.state = StarQuizGame.initialState;
     }
 
     componentDidMount() {
-        //localStorage.clear();
-
         // Parse props to state of the characters
         const tempAllCharacter = this.props.characters;
         const tempScore = [];
@@ -53,6 +54,7 @@ class StarQuizGame extends Component {
         this.setState({ allCharacters: tempAllCharacter, score: tempScore });
     }
 
+    /* Pagination function */
     onPageChanged = data => {
         const { allCharacters } = this.state;
         const { currentPage, totalPages, pageLimit } = data;
@@ -132,6 +134,7 @@ class StarQuizGame extends Component {
         hashHistory.push('/ranking');
     }
 
+    /* Calculating the final score */
     scoreCalc = () => {
         let result = 0;
 
@@ -147,6 +150,15 @@ class StarQuizGame extends Component {
             }
         }
         this.setState({ finalScore: result });
+    }
+
+    /* Reset the state to play again */
+    resetState = () => {
+        this.setState(StarQuizGame.initialState);
+        this.componentDidMount();
+        let totalPages = this.state.allCharacters.length / LIMIT_PER_PAGE;
+        this.onPageChanged({ currentPage: 1, pageLimit: LIMIT_PER_PAGE, totalPages: Math.ceil(totalPages), totalRecords: this.state.allCharacters.length });
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -212,10 +224,9 @@ class StarQuizGame extends Component {
                                     <div className={'card card-custom' + (item.edited ? ' card-answered' : '')}>
                                         <img className='card-img-top' src={item.url} alt='cards' />
                                         <div className='card-body'>
-                                            <p className='card-text'>{item.name}</p>
                                             <button type='button' className='btn btn-secondary btn-card' title='Inserir Nome' disabled={item.edited}
                                                 onClick={() => this.openModal('CHARACTER', (((currentPage - 1) * LIMIT_PER_PAGE) + index))}>?</button>
-                                            <button type='button' className='btn btn-secondary btn-card btn-card-info' title='Detalhes'
+                                            <button type='button' className='btn btn-secondary btn-card btn-card-info' title='Detalhes' disabled={item.edited}
                                                 onClick={() => this.openModal('DETAILS', (((currentPage - 1) * LIMIT_PER_PAGE) + index))}>...</button>
                                         </div>
                                     </div>
@@ -238,7 +249,7 @@ class StarQuizGame extends Component {
 
                         { /* Score Modal */
                             this.state.showScoreModal ? (
-                                <StarQuizScoreModal confirmForm={(values) => { this.confirmScoreModal(values) }} finalScore={this.state.finalScore} />
+                                <StarQuizScoreModal playAgain={() => { this.resetState() }} confirmForm={(values) => { this.confirmScoreModal(values) }} finalScore={this.state.finalScore} />
                             ) : null
                         }
                     </div >

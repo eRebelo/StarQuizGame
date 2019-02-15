@@ -46,6 +46,11 @@ class StarQuizScoreModal extends Component {
 
     playAgain = () => {
         this.setState({ showModal: false });
+        this.props.playAgain();
+    }
+
+    gameExit = () => {
+        this.setState({ showModal: false });
         hashHistory.push('/home');
     }
 
@@ -103,9 +108,9 @@ class StarQuizScoreModal extends Component {
 
                     <div className='modal-footer'>
                         <div className='row'>
-                            <button type='button' className='btn btn-dark btn-play-score' data-dismiss='modal' onClick={this.playAgain}>Jogar Novamente</button>
-                            <button type='submit' className='btn btn-dark btn-character' disabled={this.state.errors}
-                                onClick={this.props.handleSubmit(this.onSubmit)}>Salvar</button>
+                            <button type='button' className='btn btn-secondary btn-score-play-again' data-dismiss='modal' onClick={this.playAgain}>Jogar Novamente</button>
+                            <button type='button' className='btn btn-secondary btn-score' data-dismiss='modal' onClick={this.gameExit}>Sair</button>
+                            <button type='submit' className='btn btn-dark btn-score' onClick={this.props.handleSubmit(this.onSubmit)}>Salvar</button>
                         </div>
                     </div>
                 </div>

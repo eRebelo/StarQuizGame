@@ -181,6 +181,9 @@ body {
   overflow-x: scroll;
   overflow-y: hidden; }
 
+.table {
+  background-color: #464747; }
+
 /* Pagination */
 .current-page {
   font-size: 1.5rem;
@@ -415,6 +418,7 @@ ul.pagination a.page-link:hover {
 
 /* Character Modal */
 .btn-character {
+  width: 95px;
   height: 40px; }
 
 .btn-dark:disabled {
@@ -442,25 +446,12 @@ ul.pagination a.page-link:hover {
 .msg-score {
   margin-bottom: 10px; }
 
-.btn-play-score {
-  color: #464747;
-  background-color: #ffe919;
-  border-color: #b3a846;
-  width: 176px;
-  height: 40px;
-  font-weight: 400;
-  font-size: 1rem; }
+.btn-score {
+  width: 95px;
+  height: 40px; }
 
-.btn-play-score:hover {
-  color: #f4f4f4;
-  background-color: #464747;
-  border-color: #000; }
-
-.btn-play-score:focus {
-  color: #f4f4f4;
-  background-color: #464747;
-  border-color: #000;
-  outline-width: 0 !important; }
+.btn-score-play-again {
+  height: 40px; }
 
 /* Responsive Layout */
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
