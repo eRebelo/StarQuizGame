@@ -216,5 +216,137 @@ export default
         {
             name: "Yarael Poof",
             image: "https://vignette.wikia.nocookie.net/pt.starwars/images/8/83/YaraelPoof.jpg"
+        },
+        {
+            name: "Plo Koon",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/b/bf/PloKoonCardTrader.png"
+        },
+        {
+            name: "Mas Amedda",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/3/37/Mas_Amedda_SWCT.png"
+        },
+        {
+            name: "Gregar Typho",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/5/52/Gregar_Typho.jpg"
+        },
+        {
+            name: "Cordé",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/b/b6/Cordé_-_SW_Card_Trader.png"
+        },
+        {
+            name: "Cliegg Lars",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/3/36/ClieggLarsHS-SWE.jpg"
+        },
+        {
+            name: "Poggle the Lesser",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/9/93/Poggle_the_lesser_-_sw_card_trader.png"
+        },
+        {
+            name: "Luminara Unduli",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/2/21/LuminaraHS-SWE_%28new%29.png"
+        },
+        {
+            name: "Barriss Offee",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/3/37/Barrisprofile2.jpg"
+        },
+        {
+            name: "Dormé",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/1/18/Dormesenate.jpg"
+        },
+        {
+            name: "Dooku",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/b/b8/Dooku_Headshot.jpg"
+        },
+        {
+            name: "Bail Prestor Organa",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/5/50/Bail_Organa_Mug.jpg"
+        },
+        {
+            name: "Jango Fett",
+            image: "http://news.toyark.com/wp-content/uploads/sites/4/2017/04/realization-jango-fett.jpg"
+        },
+        {
+            name: "Zam Wesell",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/7/7d/Clawdite.jpg"
+        },
+        {
+            name: "Dexter Jettster",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/6/6c/DexterHS-SWE.jpg"
+        },
+        {
+            name: "Lama Su",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/4/46/Lama_Su.png"
+        },
+        {
+            name: "Taun We",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/9/9c/TaunWe.jpg"
+        },
+        {
+            name: "Jocasta Nu",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/1/15/Jocasta_Nu_SWE.png"
+        },
+        {
+            name: "Ratts Tyerell",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/6/68/RattsHS.jpg"
+        },
+        {
+            name: "R4-P17",
+            image: "https://i.ebayimg.com/images/g/ouQAAOSwM4xXalH4/s-l300.jpg"
+        },
+        {
+            name: "Wat Tambor",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/3/30/Wat_Tambor.jpg"
+        },
+        {
+            name: "San Hill",
+            image: "https://vignette.wikia.nocookie.net/swfanon/images/8/8a/3429_plageuis.jpg"
+        },
+        {
+            name: "Shaak Ti",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/2/20/Shaak_Ti_closeup-SWE.png"
+        },
+        {
+            name: "Grievous",
+            image: "https://starwarsblog.starwars.com/wp-content/uploads/2017/10/lair-of-grievous-tall-1536x864.jpg"
+        },
+        {
+            name: "Tarfful",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/d/d2/Tarfful_OP.jpg"
+        },
+        {
+            name: "Raymus Antilles",
+            image: "https://vignette.wikia.nocookie.net/es.starwars/images/8/80/Raymus_card_trader.png"
+        },
+        {
+            name: "Sly Moore",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/e/ec/SlyMooreIsWatchingYouPoop-OfficialPix.jpg"
+        },
+        {
+            name: "Tion Medon",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/4/43/Tion_Medon.jpg"
+        },
+        {
+            name: "Finn",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/a/af/Finn_TLJ_Collector%27s_Edition.png"
+        },
+        {
+            name: "Rey",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/f/f8/ReyTLJEntertainmentWeeklyNovember.png"
+        },
+        {
+            name: "Poe Dameron",
+            image: "https://vignette.wikia.nocookie.net/starwars/images/7/79/Poe_Dameron_TLJ.png"
+        },
+        {
+            name: "BB8",
+            image: "https://i.ebayimg.com/images/g/cO0AAOSw8K5apP79/s-l300.jpg"
+        },
+        {
+            name: "Captain Phasma",
+            image: "https://vignette.wikia.nocookie.net/villains/images/2/2a/Phasma_TLJ.png"
+        },
+        {
+            name: "Padmé Amidala",
+            image: "https://vignette.wikia.nocookie.net/pt.starwars/images/b/b2/Padmegreenscrshot.jpg"
         }
     ]
