@@ -1,7 +1,7 @@
 export default
     [
         {
-            name: " Skywalker",
+            name: "Luke Skywalker",
             image: "http://www.netralnews.com/foto/2018/10/19/783-karakter_luke_skywalker_bakal_hadir_di_saga_terbaru_film_star_wars-696x341.jpg"
         },
         {
